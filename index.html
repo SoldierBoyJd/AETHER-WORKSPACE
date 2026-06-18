@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aether WorkSpace - Premium Task Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark" class="dark">
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="logo-text">AETHER WORKSPACE</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="workspace">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="9" y1="9" x2="15" y2="9"></line>
+                        <line x1="9" y1="13" x2="15" y2="13"></line>
+                        <line x1="9" y1="17" x2="15" y2="17"></line>
+                    </svg>
+                    <span>Task Workspace</span>
+                </button>
+
+                <button class="nav-btn" data-tab="attributes">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    <span>Attr vs Property</span>
+                </button>
+
+                <button class="nav-btn" data-tab="propagation">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                    <span>Event Propagation</span>
+                </button>
+
+                <button class="nav-btn" data-tab="pipeline">
+                    <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="6" y1="3" x2="6" y2="15"></line>
+                        <circle cx="18" cy="6" r="3"></circle>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <path d="M18 9a9 9 0 0 1-9 9"></path>
+                    </svg>
+                    <span>Render Pipeline</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <!-- Theme Button moved to Header for mobile responsiveness -->
+            </div>
+        </aside>
+
+        <!-- Main Display Content -->
+        <main class="main-content">
+            <!-- Header bar -->
+            <header class="dashboard-header">
+                <div class="header-title">
+                    <h1 id="active-tab-title">Task Workspace</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="themeBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <span>Light Mode</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- 1. Task Workspace Tab -->
+            <section id="tab-workspace" class="tab-content active-tab">
+                <!-- Counters Cards -->
+                <div class="counterBox">
+                    <div class="stat-card pending-card">
+                        <span class="stat-label">Pending Tasks</span>
+                        <span class="stat-value pendingCount">0</span>
+                    </div>
+                    <div class="stat-card completed-card">
+                        <span class="stat-label">Completed Tasks</span>
+                        <span class="stat-value completedCount">0</span>
+                    </div>
+                </div>
+
+                <!-- Input box section -->
+                <div class="workspace-toolbar">
+                    <div class="input-group">
+                        <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <input class="taskInput" type="text" placeholder="Add a new task...">
+                    </div>
+                    
+                    <div class="category-select-wrapper">
+                        <select class="category">
+                            <option value="Study">Study</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                    </div>
+
+                    <button class="add-btn add">Add Task</button>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="searchBox">
+                    <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="searchInput" placeholder="Search tasks by name...">
+                    <button class="clearAll">Clear All</button>
+                </div>
+
+                <!-- Task List Container -->
+                <div class="container">
+                    <!-- Dynamically populated tasks -->
+                </div>
+            </section>
+
+            <!-- 2. Attributes vs Properties Tab -->
+            <section id="tab-attributes" class="tab-content">
+                <div class="attributeSection">
+                    <div class="sandbox-container">
+                        <!-- Play Box -->
+                        <div class="sandbox-card">
+                            <div>
+                                <h2 class="card-title">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                                    Interactive Input Sandbox
+                                </h2>
+                                <p class="card-desc">Type inside the input field and click "Show Difference". The attribute represents the initial HTML state, while the property tracks the dynamic JavaScript value.</p>
+                            </div>
+                            
+                            <div class="playground-controls">
+                                <input class="demoInput" value="Hello World">
+                                <button class="showDifference">Show Difference</button>
+                            </div>
+                        </div>
+
+                        <!-- Live Console Outputs -->
+                        <div class="console-card">
+                            <span class="console-title">Live DOM Property & Attribute Output</span>
+                            
+                            <div>
+                                <div class="console-line">
+                                    Property: <span class="propertyOutput">Click show difference to inspect...</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="console-line">
+                                    Attribute: <span class="attributeOutput">Click show difference to inspect...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Event Propagation Tab -->
+            <section id="tab-propagation" class="tab-content">
+                <div class="propagationSection">
+                    <div class="propagation-grid">
+                        <!-- Nested Circles Visualizer -->
+                        <div class="nest-visualizer-card">
+                            <div class="grand">
+                                <div class="parent">
+                                    <button class="child">Trigger Propagation</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Telemetry Log -->
+                        <div class="telemetry-card">
+                            <div class="telemetry-header">
+                                <h2 class="card-title">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                    Event Flow Telemetry
+                                </h2>
+                                <button class="clear-log-btn">Clear Logs</button>
+                            </div>
+                            <div class="propagation-log">
+                                <!-- Logs will stream here in real-time -->
+                                <div style="color: var(--text-muted);">Click the child button inside grandparent nests to observe the DOM capturing (top -> down) and bubbling (bottom -> up) flow.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Browser Rendering Pipeline Tab -->
+            <section id="tab-pipeline" class="tab-content">
+                <div class="renderSection">
+                    <div class="pipeline-controls">
+                        <div>
+                            <h2 class="card-title">Browser Rendering Steps</h2>
+                            <p class="card-desc">Visualizer demonstrating how HTML code converts into visible pixels step-by-step.</p>
+                        </div>
+                        <button class="simulate-pipeline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <span>Simulate Render Pipeline</span>
+                        </button>
+                    </div>
+
+                    <div class="pipeline-wrapper">
+                        <div class="pipeline">
+                            <div class="box">HTML</div>
+                            <div class="arrow">→</div>
+                            <div class="box">Parsing</div>
+                            <div class="arrow">→</div>
+                            <div class="box">Tokenization</div>
+                            <div class="arrow">→</div>
+                            <div class="box">DOM Tree</div>
+                            <div class="arrow">→</div>
+                            <div class="box">CSS</div>
+                            <div class="arrow">→</div>
+                            <div class="box">CSSOM Tree</div>
+                            <div class="arrow">→</div>
+                            <div class="box">DOM + CSSOM</div>
+                            <div class="arrow">→</div>
+                            <div class="box">Render Tree</div>
+                            <div class="arrow">→</div>
+                            <div class="box">Layout</div>
+                            <div class="arrow">→</div>
+                            <div class="box">Paint</div>
+                            <div class="arrow">→</div>
+                            <div class="box">Composite</div>
+                        </div>
+                    </div>
+
+                    <!-- Pipeline Legend Explanations -->
+                    <div class="pipeline-legend">
+                        <div class="legend-card">
+                            <span class="legend-tag parse">DOM Construction</span>
+                            <h3 class="legend-title">HTML to DOM</h3>
+                            <p class="legend-desc">The browser processes character streams of HTML code, tokenizes it into structured nodes, and compiles the raw DOM Tree.</p>
+                        </div>
+                        <div class="legend-card">
+                            <span class="legend-tag render">Style & Structure</span>
+                            <h3 class="legend-title">CSSOM & Render Tree</h3>
+                            <p class="legend-desc">CSS rules are parsed into the CSSOM. Together with the DOM, they construct the Render Tree representing actual visible items.</p>
+                        </div>
+                        <div class="legend-card">
+                            <span class="legend-tag draw">Painting & Compositing</span>
+                            <h3 class="legend-title">Drawing Pixels</h3>
+                            <p class="legend-desc">Layout calculates position coordinates, Paint determines color styling layers, and Composite blends layers onto the GPU screen.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Mobile Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-tab="workspace">
+                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="9"></line>
+                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                    <line x1="9" y1="17" x2="15" y2="17"></line>
+                </svg>
+                <span>Tasks</span>
+            </button>
+
+            <button class="nav-btn" data-tab="attributes">
+                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <span>Attrs</span>
+            </button>
+
+            <button class="nav-btn" data-tab="propagation">
+                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="6"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+                <span>Prop</span>
+            </button>
+
+            <button class="nav-btn" data-tab="pipeline">
+                <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="3" x2="6" y2="15"></line>
+                    <circle cx="18" cy="6" r="3"></circle>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <path d="M18 9a9 9 0 0 1-9 9"></path>
+                </svg>
+                <span>Pipeline</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
